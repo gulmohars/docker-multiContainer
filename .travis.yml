@@ -11,8 +11,8 @@ script:
   #- docker run gulmohar/server npm run test -- --coverage
 
 after_success:
-  #- docker build -t gulmohar/multicontainer-client ./client
-  - docker build -t gulmohar/multicontainer-client -f ./client/Dockerfile.dev ./client
+  - docker build -t gulmohar/multicontainer-client ./client
+  #- docker build -t gulmohar/multicontainer-client -f ./client/Dockerfile.dev ./client
   - docker build -t gulmohar/multicontainer-server ./server
   - docker build -t gulmohar/multicontainer-worker ./worker
   - docker build -t gulmohar/multicontainer-nginx ./nginx
