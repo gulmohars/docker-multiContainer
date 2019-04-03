@@ -23,3 +23,16 @@ after_success:
   - docker push gulmohar/multicontainer-server
   - docker push gulmohar/multicontainer-worker
   - docker push gulmohar/multicontainer-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: complexweb-docker
+  env: ComplexwebDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-458022107738
+  bucket_path: complexweb-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: '$AWS_SECRET_KEY'
